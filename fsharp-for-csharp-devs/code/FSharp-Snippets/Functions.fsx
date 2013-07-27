@@ -44,18 +44,26 @@ let oldSchool = youngerThan 6 { Name = "Albert"; Age = 11 }
 let coolBeans = { Name = "Friday"; Age = 6 } |> youngerThan 5
 
 // why is this awesomesauce?
-// you can now build workflows;
-// essentially you get fluent interfaces 
-// everywhere, for free:
+// essentially you can freely compose functions,
+// you get fluent interfaces everywhere, for free
+
+let lowerCase (text: string) = text.ToLowerInvariant()
+let split (text: string) = text.Split(' ')
+
+let cleanup text = 
+    text 
+    |> lowerCase // lowerCase text
+    |> split // split (lowerCase text)
+    |> Array.sort // ...
+
+// "Inside-out programming": compose small
+// functions into bigger workflows:
 
 open System
 open System.IO
 
 let readLines path = File.ReadAllLines(path)
 let saveAs path lines = File.WriteAllLines(path, lines)
-
-let lowerCase (text: string) = text.ToLowerInvariant()
-let split (text: string) = text.Split(' ')
 
 let analyze source target =
     readLines source // we grab the text lines

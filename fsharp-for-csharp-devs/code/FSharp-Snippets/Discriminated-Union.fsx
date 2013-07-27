@@ -4,7 +4,8 @@ type Boolean =
     | False
 
 // the "mystery default" is gone
-// also not what happens if you add
+
+// also note what happens if you add
 // a "Maybe" case to Boolean
 let truth (b: Boolean) =
     match b with
@@ -34,3 +35,9 @@ let maxFromList (data: int list) =
 // now you have a signature that is explicit:
 // sometimes, that operation won't be able
 // to give you "something"
+
+let printMax (data: int list) =
+    let max = maxFromList data
+    match max with
+    | None -> "Dude there is no max here"
+    | Some(value) -> sprintf "Maximum is %i" value
