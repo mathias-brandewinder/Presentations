@@ -9,7 +9,7 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Regression", "Regression\Re
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TypeProviders", "TypeProviders\TypeProviders.fsproj", "{84284CF3-6C60-4A79-A9E3-457782790521}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{587FDC5B-9E64-4849-8EB5-49890B0CBE7E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8026BA81-F44E-4977-A6B7-3454E4E5269E}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe

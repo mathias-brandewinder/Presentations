@@ -2,7 +2,7 @@
 #r @"..\packages\Accord.Math.2.11.0.0\lib\Accord.Math.dll"
 #r @"..\packages\Accord.Statistics.2.11.0.0\lib\Accord.Statistics.dll"
 #r @"..\packages\Accord.MachineLearning.2.11.0.0\lib\Accord.MachineLearning.dll"
- 
+
 open System
 open System.IO
  
@@ -10,6 +10,9 @@ open Accord.MachineLearning
 open Accord.MachineLearning.VectorMachines
 open Accord.MachineLearning.VectorMachines.Learning
 open Accord.Statistics.Kernels
+
+#load "Visualizer.fs"
+open Digits.Visualizer
  
 (* 
 The dataset I am using here is a subset of the Kaggle digit recognizer;
@@ -33,7 +36,11 @@ let readData filePath =
     |> Array.unzip
  
 let labels, observations = readData training
- 
+
+// Let's visualize a couple of the data points
+for i in 0 .. 9 do 
+    Digits.Visualizer.draw (labels.[i], observations.[i]) (string labels.[i])
+
 (*
 Note that while this is a small dataset, loading the data
 is an expensive part of the process. 
@@ -73,9 +80,16 @@ let correct =
     |> Array.average
  
 let view =
-    Array.zip validationLabels validationObservations 
-    |> fun x -> x.[..20]
-    |> Array.iter (fun (l, o) -> printfn "Real: %i, predicted: %i" l (svm.Compute(o)))
+    let rng = Random()
+    let size = Array.length validationLabels
+    seq { for i in 0 .. 9 do 
+              let x = rng.Next(size)
+              let (real,pixels) = validationLabels.[x], validationObservations.[x]
+              let pred = svm.Compute(pixels)
+              yield (real,pixels),pred
+        }
+        |> Seq.iter (fun ((real,pixels),pred) -> 
+            Digits.Visualizer.draw (real,pixels) (sprintf "%i -> %i" real pred))
 
 (*
 At that point in time we have a decent prediction model.
