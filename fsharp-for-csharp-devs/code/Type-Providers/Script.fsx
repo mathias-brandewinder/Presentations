@@ -1,6 +1,12 @@
-﻿#r @"..\packages\FSharp.Data.1.1.9\lib\net40\FSharp.Data.dll"
-#r @"..\packages\RProvider.1.0.0\lib\RDotNet.dll"
-#r @"..\packages\RProvider.1.0.0\lib\RProvider.dll"
+﻿(*
+Note: for this script to run properly,
+you need to have R installed.
+*)
+
+#I @"..\packages\"
+#r @"FSharp.Data.2.0.4\lib\net40\FSharp.Data.dll"
+#r @"RProvider.1.0.5\lib\RDotNet.dll"
+#r @"RProvider.1.0.5\lib\RProvider.dll"
 
 open System
 open FSharp.Data

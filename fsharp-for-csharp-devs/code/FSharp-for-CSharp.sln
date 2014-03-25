@@ -1,14 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp-Snippets", "CSharp-Snippets\CSharp-Snippets.csproj", "{10552C59-DA1B-4889-8BAF-132E5AC7465F}"
-EndProject
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2FB1584A-EBF2-4434-AB9F-39622134F90E}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp-Snippets", "CSharp-Snippets\CSharp-Snippets.csproj", "{10552C59-DA1B-4889-8BAF-132E5AC7465F}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharp-Snippets", "FSharp-Snippets\FSharp-Snippets.fsproj", "{4F62267C-36C9-4465-8A47-39C6C1D8DB0A}"
 EndProject
