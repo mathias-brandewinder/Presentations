@@ -4,7 +4,7 @@ you need to have R installed.
 *)
 
 #I @"..\packages\"
-#r @"FSharp.Data.2.0.4\lib\net40\FSharp.Data.dll"
+#r @"FSharp.Data.2.0.5\lib\net40\FSharp.Data.dll"
 #r @"RProvider.1.0.5\lib\RDotNet.dll"
 #r @"RProvider.1.0.5\lib\RProvider.dll"
 
@@ -14,6 +14,10 @@ open RDotNet
 open RProvider
 open RProvider.``base``
 open RProvider.graphics
+
+type Titanic = CsvProvider<"Titanic.csv">
+let passengers = (new Titanic()).Rows
+let first = passengers |> Seq.head
 
 // we get access to live data from the World Bank,
 // with IntelliSense for discoverability

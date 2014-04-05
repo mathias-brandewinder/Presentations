@@ -39,7 +39,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="FSharp.Data">
-      <HintPath>..\packages\FSharp.Data.2.0.4\lib\net40\FSharp.Data.dll</HintPath>
+      <HintPath>..\packages\FSharp.Data.2.0.5\lib\net40\FSharp.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
@@ -67,6 +67,7 @@
   <ItemGroup>
     <None Include="Script.fsx" />
     <None Include="packages.config" />
+    <None Include="titanic.csv" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
