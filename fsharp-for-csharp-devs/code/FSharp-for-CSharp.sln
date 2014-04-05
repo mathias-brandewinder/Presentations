@@ -16,6 +16,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharp-Snippets", "FSharp-S
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Type-Providers", "Type-Providers\Type-Providers.fsproj", "{7958B3D7-38B6-4395-BF7C-6220E39AA0E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp-Beginning", "CSharp-Beginning\CSharp-Beginning.csproj", "{036881E4-CCFF-4682-A364-32B11A4E97C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{7958B3D7-38B6-4395-BF7C-6220E39AA0E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7958B3D7-38B6-4395-BF7C-6220E39AA0E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7958B3D7-38B6-4395-BF7C-6220E39AA0E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{036881E4-CCFF-4682-A364-32B11A4E97C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{036881E4-CCFF-4682-A364-32B11A4E97C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{036881E4-CCFF-4682-A364-32B11A4E97C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{036881E4-CCFF-4682-A364-32B11A4E97C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
