@@ -22,13 +22,15 @@ let first = passengers |> Seq.head
 // we get access to live data from the World Bank,
 // with IntelliSense for discoverability
 let wb = WorldBankData.GetDataContext()
-let capital = wb.Countries.Afghanistan.CapitalCity
+wb.Countries.Canada.CapitalCity
+
+open RProvider.graphics
 
 // We can now work against R, with Intellisense...
 let rng = Random()
-let data = R.c([| for i in 0 .. 1000 -> rng.NextDouble() |])
+let data = [ for i in 0 .. 1000 -> rng.NextDouble() ]
 R.plot(data)
-R.hist(data |> R.log)
+R.hist(data |> List.map (fun x -> x * x))
 
 // ... and grab live data from the World Bank,
 // and send it to R for visualization
@@ -60,3 +62,28 @@ R.plot(dataframe)
 
 let names = countries |> Array.map (fun c -> c.Name)
 R.text(gdp2000, gdp2010, names)
+
+(* This whole section requires the R rworldmap package
+to be installed (it is not part of the standard distribution).
+*)
+
+open RProvider.rworldmap
+
+let df =
+    let codes, pops = 
+        query { for country in wb.Countries -> 
+                    country.Code, 
+                    country.Indicators.``Population (Total)``.[2010] }
+//        query { for country in wb.Countries -> 
+//                    country.Code, 
+//                    country.Indicators.``Population (Total)``.[2010]/country.Indicators.``Population (Total)``.[2000] }
+        |> Seq.toArray
+        |> Array.unzip
+    let data =
+        [ "Code", codes |> box 
+          "Pop", pops |> box ]
+    R.data_frame (namedParams data)
+
+let map = R.joinCountryData2Map(df, "ISO3", "Code")
+R.mapDevice()
+R.mapCountryData(map,"Pop")
