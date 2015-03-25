@@ -4,9 +4,10 @@ you need to have R installed.
 *)
 
 #I @"..\packages\"
-#r @"FSharp.Data.2.0.5\lib\net40\FSharp.Data.dll"
-#r @"RProvider.1.0.5\lib\RDotNet.dll"
-#r @"RProvider.1.0.5\lib\RProvider.dll"
+#r @"FSharp.Data.2.2.0\lib\net40\FSharp.Data.dll"
+#r @"R.NET.Community.1.5.16\lib\net40\RDotNet.dll"
+#r @"RProvider.1.1.8\lib\net40\RProvider.Runtime.dll"
+#r @"RProvider.1.1.8\lib\net40\RProvider.dll"
 
 open System
 open FSharp.Data
@@ -15,14 +16,22 @@ open RProvider
 open RProvider.``base``
 open RProvider.graphics
 
+
 type Titanic = CsvProvider<"Titanic.csv">
 let passengers = (new Titanic()).Rows
 let first = passengers |> Seq.head
+
+
+type TopUsers = JsonProvider<"""https://api.stackexchange.com/2.2/tags/F%23/top-answerers/all_time?site=stackoverflow""">
+let sample = TopUsers.GetSample ()
+sample.Items |> Seq.iter (fun user -> printfn "%s" user.User.DisplayName)
+
 
 // we get access to live data from the World Bank,
 // with IntelliSense for discoverability
 let wb = WorldBankData.GetDataContext()
 wb.Countries.Canada.CapitalCity
+
 
 open RProvider.graphics
 
@@ -73,10 +82,7 @@ let df =
     let codes, pops = 
         query { for country in wb.Countries -> 
                     country.Code, 
-                    country.Indicators.``Population (Total)``.[2010] }
-//        query { for country in wb.Countries -> 
-//                    country.Code, 
-//                    country.Indicators.``Population (Total)``.[2010]/country.Indicators.``Population (Total)``.[2000] }
+                    country.Indicators.``Population, total``.[2010]/country.Indicators.``Population, total``.[2000] }
         |> Seq.toArray
         |> Array.unzip
     let data =
