@@ -1,7 +1,8 @@
-﻿#r @"..\packages\MathNet.Numerics.2.6.2\lib\net40\MathNet.Numerics.dll"
-#r @"..\packages\MathNet.Numerics.FSharp.2.6.0\lib\net40\MathNet.Numerics.FSharp.dll"
+﻿#I "..\packages"
+#r @"MathNet.Numerics.3.7.0\lib\net40\MathNet.Numerics.dll"
+#r @"MathNet.Numerics.FSharp.3.7.0\lib\net40\MathNet.Numerics.FSharp.dll"
 
-open MathNet.Numerics.LinearAlgebra.Generic
+open MathNet.Numerics.LinearAlgebra
 open MathNet.Numerics.LinearAlgebra.Double
 
 (*
@@ -67,11 +68,9 @@ YOU CAN DO THAT BY GOING
 TOOLS > OPTIONS > F# TOOLS > F# INTERACTIVE > 64 BITS set to TRUE
 *)
 
-System.Environment.CurrentDirectory <- __SOURCE_DIRECTORY__
-
 open MathNet.Numerics
-open MathNet.Numerics.Algorithms.LinearAlgebra.Mkl
-Control.LinearAlgebraProvider <- MklLinearAlgebraProvider()
+Control.NativeProviderPath <- __SOURCE_DIRECTORY__
+Control.UseNativeMKL()
 
 let fastBeta = (X.Transpose() * X).Inverse() * X.Transpose() * Y
 

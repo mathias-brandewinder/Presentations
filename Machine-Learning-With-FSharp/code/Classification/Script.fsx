@@ -1,7 +1,8 @@
-﻿#r @"..\packages\Accord.2.11.0.0\lib\Accord.dll"
-#r @"..\packages\Accord.Math.2.11.0.0\lib\Accord.Math.dll"
-#r @"..\packages\Accord.Statistics.2.11.0.0\lib\Accord.Statistics.dll"
-#r @"..\packages\Accord.MachineLearning.2.11.0.0\lib\Accord.MachineLearning.dll"
+﻿#I @"../packages"
+#r @"Accord.2.15.0\lib\net45\Accord.dll"
+#r @"Accord.Math.2.15.0\lib\net45\Accord.Math.dll"
+#r @"Accord.Statistics.2.15.0\lib\net45\Accord.Statistics.dll"
+#r @"Accord.MachineLearning.2.15.0\lib\net45\Accord.MachineLearning.dll"
 
 open System
 open System.IO
