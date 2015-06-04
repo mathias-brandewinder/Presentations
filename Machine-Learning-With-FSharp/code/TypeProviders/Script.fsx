@@ -18,10 +18,10 @@ We force inference to treat every feature as optional,
 assuming that any feature could have missing values.
 *)
 
-type Titanic = CsvProvider<"titanic.csv", 
-                           Schema="PassengerId=int, Pclass->Class, Parch->ParentsOrChildren, SibSp->SiblingsOrSpouse", 
-                           SafeMode=true, 
-                           PreferOptionals=true>
+type Titanic = CsvProvider<"titanic.csv">
+//                           Schema="PassengerId=int, Pclass->Class, Parch->ParentsOrChildren, SibSp->SiblingsOrSpouse", 
+//                           SafeMode=true, 
+//                           PreferOptionals=true>
 
 let first = (new Titanic()).Data |> Seq.head
 
@@ -31,7 +31,7 @@ in a statically typed manner, over the wire...
 *)
 
 let wb = WorldBankData.GetDataContext()
-
+//wb.Countries.Haiti.Indicators.d
 let largeCountries =
     query {
         for c in wb.Countries do
@@ -79,6 +79,9 @@ let youth  = [ for c in sample -> c.Indicators.``Population ages 0-14 (% of tota
 |> R.plot
 
 // more elegant solution: use Deedle data frame...
+
+// this example requires the rworldmap package to
+// be installed on the local machine to run.
 
 open RProvider.rworldmap
 

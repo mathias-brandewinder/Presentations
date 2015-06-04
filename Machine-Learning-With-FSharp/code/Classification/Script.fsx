@@ -99,3 +99,8 @@ faster or more accurate (or both!). The beauty of having
 a REPL here is that I don't need to reload data, 
 I can just keep going. 
 *)
+
+(*
+I can also immediately use it in production: you can
+turn a script into a class / dll with almost no effort. 
+*)

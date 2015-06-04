@@ -12,8 +12,8 @@ which will look familar to anyone who has
 been using MatLab or Octave.
 *)
 
-let A = matrix [ [ 1.; 2.; 3.; ];
-                 [ 4.; 5.; 6.; ];
+let A = matrix [ [ 1.; 2.; 3.; ]
+                 [ 4.; 5.; 6.; ]
                  [ 7.; 8.; 9.; ] ]
 
 let B = vector [ 1.; 2.; 3. ]
