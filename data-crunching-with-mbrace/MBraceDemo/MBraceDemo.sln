@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MBraceDemo", "MBraceDemo\MBraceDemo.fsproj", "{38BA7CD1-5C26-48DA-ACF1-E3879FB6EF00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnalyzer", "TextAnalyzer\TextAnalyzer.csproj", "{104F239D-E97D-4BE2-B8FB-49A81FCA4D46}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38BA7CD1-5C26-48DA-ACF1-E3879FB6EF00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38BA7CD1-5C26-48DA-ACF1-E3879FB6EF00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38BA7CD1-5C26-48DA-ACF1-E3879FB6EF00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38BA7CD1-5C26-48DA-ACF1-E3879FB6EF00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{104F239D-E97D-4BE2-B8FB-49A81FCA4D46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{104F239D-E97D-4BE2-B8FB-49A81FCA4D46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{104F239D-E97D-4BE2-B8FB-49A81FCA4D46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{104F239D-E97D-4BE2-B8FB-49A81FCA4D46}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
