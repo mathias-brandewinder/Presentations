@@ -1,7 +1,8 @@
-﻿#r @"..\packages\Accord.2.11.0.0\lib\Accord.dll"
-#r @"..\packages\Accord.Math.2.11.0.0\lib\Accord.Math.dll"
-#r @"..\packages\Accord.Statistics.2.11.0.0\lib\Accord.Statistics.dll"
-#r @"..\packages\Accord.MachineLearning.2.11.0.0\lib\Accord.MachineLearning.dll"
+﻿#I @"../packages"
+#r @"Accord.2.15.0\lib\net45\Accord.dll"
+#r @"Accord.Math.2.15.0\lib\net45\Accord.Math.dll"
+#r @"Accord.Statistics.2.15.0\lib\net45\Accord.Statistics.dll"
+#r @"Accord.MachineLearning.2.15.0\lib\net45\Accord.MachineLearning.dll"
 
 open System
 open System.IO
@@ -97,4 +98,9 @@ Now we can work on making it better - that is, either
 faster or more accurate (or both!). The beauty of having
 a REPL here is that I don't need to reload data, 
 I can just keep going. 
+*)
+
+(*
+I can also immediately use it in production: you can
+turn a script into a class / dll with almost no effort. 
 *)
