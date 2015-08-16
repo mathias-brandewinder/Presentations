@@ -34,3 +34,27 @@ We can now use the FSI session
 // fsiSession.
 
 fsiSession.EvalExpression "1 + 2"
+
+let eval text = 
+    match fsiSession.EvalExpression text with
+    | Some value -> sprintf "%A" value.ReflectionValue
+    | None -> "Invalid result"
+
+let sample1 = "let x = 42
+x + 1"
+
+eval sample1
+
+(*
+Some @fsibot gotchas
+*)
+
+// Line breaks in Twitter -> use "verbose"/ocaml style
+
+let sample2 = "let x = 42 in x"
+eval sample2
+
+// printfn: side-effect, doesn't return a string!
+
+let sample3 = """printfn "hello" """
+eval sample3

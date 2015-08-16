@@ -50,6 +50,7 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <None Include="compiler.fsx" />
+    <None Include="security.fsx" />
     <Content Include="packages.config" />
     <Content Include="app.config" />
   </ItemGroup>
