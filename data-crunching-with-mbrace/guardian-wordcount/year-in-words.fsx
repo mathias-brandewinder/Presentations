@@ -9,17 +9,21 @@
 #r "WindowsBase.dll"
 
 open System
+open System.IO
+open System.Globalization
 open System.Windows
 open System.Windows.Media
 open System.Windows.Shapes
 open System.Windows.Controls
 
+let format = CultureInfo("en-US", false).DateTimeFormat
+
 let data =
     __SOURCE_DIRECTORY__ + "/summary"
-    |> System.IO.File.ReadAllLines
+    |> File.ReadAllLines
     |> Array.map (fun line -> line.Split '|')
     |> Array.map (fun line ->
-        let date = line.[0] |> Convert.ToDateTime
+        let date = Convert.ToDateTime(line.[0],format)
         let data = 
             line.[1..]
             |> Array.map (fun x -> x.Split ',')
@@ -49,7 +53,7 @@ let createBlock (target:Canvas) (text:string) (size:float) (pos:float*float) =
     textBlock.Text <- text
     textBlock.FontFamily <- FontFamily("Arial Black")
     textBlock.FontSize <- size
-    textBlock.Foreground <- Brushes.Red
+    textBlock.Foreground <- Brushes.Yellow
     target.Children.Add(textBlock) |> ignore 
     let top,left = pos
     Canvas.SetTop(textBlock, top)
@@ -66,6 +70,7 @@ let margin = 100
 
 let rng = Random ()
 
+// create a 'block' for each of the words to be rendered
 let blocks =
     words
     |> Seq.map (fun word -> 
@@ -79,10 +84,10 @@ let sizes = blocks |> Map.map (fun word _ -> 0.)
 
 let byDay =
     __SOURCE_DIRECTORY__ + "/summary"
-    |> System.IO.File.ReadAllLines
+    |> File.ReadAllLines
     |> Array.map (fun line -> line.Split '|')
     |> Array.map (fun line ->
-        let date = line.[0] |> Convert.ToDateTime
+        let date = Convert.ToDateTime(line.[0],format)
         let data = 
             line.[1..]
             |> Array.map (fun x -> x.Split ',')
@@ -113,12 +118,10 @@ let updateSizes (sizes:Map<string,float>) (dayData:Map<string,float> option) =
 
 let dispatcher = win.Dispatcher
 
-let startDate = DateTime(2014,1,1)
+let startDate = DateTime(2014,11,17)
 
 let rec loop (day:int,sizes:Map<string,float>) = 
     async {
-        do! Async.Sleep 100
-
         let date = startDate.AddDays(day |> float)
         let dayData = byDay.TryFind date
 
@@ -126,6 +129,7 @@ let rec loop (day:int,sizes:Map<string,float>) =
         
         dispatcher.Invoke(
             fun _ ->
+                // render current date
                 dateblock.Text <- date.ToShortDateString ()
                 // update display
                 blocks
@@ -133,7 +137,7 @@ let rec loop (day:int,sizes:Map<string,float>) =
                     let block = kv.Value
                     let size = newSizes.[kv.Key]
                     let size = size / maxValue
-                    let brush = SolidColorBrush(Colors.Gold)
+                    let brush = SolidColorBrush(Colors.Orange)
                     brush.Opacity <- size
                     block.Foreground <- brush
                     if size > 0.01 
@@ -147,4 +151,3 @@ loop (0,sizes) |> Async.Start
 do 
    let app =  new Application() in
    app.Run() |> ignore
-
