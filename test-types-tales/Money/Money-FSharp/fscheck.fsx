@@ -1,4 +1,18 @@
-﻿type Currency = 
+﻿#r @"../packages/FsCheck/lib/net45/FsCheck.dll"
+open FsCheck
+
+// simple illustration
+
+let ``reversing a list twice should be identity`` (list:int list) =
+    list |> List.rev |> List.rev = list
+
+Check.Quick ``reversing a list twice should be identity``
+
+Check.Verbose ``reversing a list twice should be identity``
+
+// on our example...
+
+type Currency = 
     | USD
     | EUR
 
@@ -14,12 +28,11 @@ let (.*) multiplier (money:Money) =
 let ``Zero times any Money should be Zero`` (amount:float) =
     0.0 .* (USD,amount) = (USD,0.0)
 
-#r @"../packages/FsCheck.2.0.7/lib/net45/FsCheck.dll"
-open FsCheck
 
 // generate a bunch of cases,
 // and throw it at our invariant.
 // does it break?
+// 'automated TDD triangulation'
 Check.Quick ``Zero times any Money should be Zero``
 
 // same thing, but showing each check

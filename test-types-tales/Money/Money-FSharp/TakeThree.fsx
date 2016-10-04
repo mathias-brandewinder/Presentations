@@ -19,6 +19,8 @@ let tenDollars = (USD, 10.0)
 
 2.0 .* fiveDollars = tenDollars
 
+2.0 .* (USD, 5.0) = (USD, 10.0)
+
 // test case 2:
 // if the rate is 1 EUR = 2 USD,
 // then 10 EUR should convert to 20 USD
@@ -43,6 +45,18 @@ convert rates USD (EUR, 10.0) = (USD, 20.0)
 
 // whenever I see a possibly Exception, I think 
 // "can I make that problem disappear with types?"
+
+type Conversion =
+    | Rate of float
+    | CannotConvert
+
+let saferRates origin destination =
+    match (origin,destination) with
+    | EUR,USD -> Rate(2.0)
+    | _ -> CannotConvert
+
+
+
 
 type SafeRates = Currency -> Currency -> float Option
 
