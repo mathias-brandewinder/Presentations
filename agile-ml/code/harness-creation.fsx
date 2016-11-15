@@ -3,6 +3,7 @@
 #I @"../packages/"
 #r @"FSharp.Data/lib/net40/FSharp.Data.dll"
 #r @"Accord/lib/net45/Accord.dll"
+#r @"Accord.Math/lib/net45/Accord.Math.Core.dll"
 #r @"Accord.Math/lib/net45/Accord.Math.dll"
 #r @"Accord.Statistics/lib/net45/Accord.Statistics.dll"
 
@@ -111,10 +112,11 @@ let sample =
 
 let logPredictor = logistic model sample     
 
-sample
-|> Array.averageBy (fun (label,obs) -> 
-    abs (label - logPredictor obs))
 
+sample
+|> Seq.averageBy (fun (label,obs) ->
+    pown (label - logPredictor obs) 2)
+|> sqrt
 
 // add a feature?
 

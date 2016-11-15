@@ -7,6 +7,7 @@ open HomeDepot.Core
 open HomeDepot.Features
 
 #r @"Accord/lib/net45/Accord.dll"
+#r @"Accord.Math/lib/net45/Accord.Math.Core.dll"
 #r @"Accord.Math/lib/net45/Accord.Math.dll"
 #r @"Accord.Statistics/lib/net45/Accord.Statistics.dll"
 
@@ -24,6 +25,8 @@ let model = [|
 
 let logPredictor = logistic model sample     
 
+
 sample
-|> Array.averageBy (fun (label,obs) -> 
-    abs (label - logPredictor obs))
+|> Seq.averageBy (fun (label,obs) ->
+    pown (label - logPredictor obs) 2)
+|> sqrt
