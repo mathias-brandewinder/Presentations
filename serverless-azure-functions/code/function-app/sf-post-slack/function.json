@@ -1,0 +1,12 @@
+{
+  "bindings": [
+    {
+      "name": "inputMessage",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "sf-rate",
+      "connection": "AzureWebJobsDashboard"
+    }
+  ],
+  "disabled": false
+}

@@ -1,0 +1,3 @@
+type Message = {
+    Rate : string
+}
