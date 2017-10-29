@@ -1,7 +1,7 @@
 ﻿// dependencies
 
 #I @"../packages/"
-#r @"FSharp.Data/lib/net40/FSharp.Data.dll"
+#r @"FSharp.Data/lib/net45/FSharp.Data.dll"
 #r @"Accord/lib/net45/Accord.dll"
 #r @"Accord.Math/lib/net45/Accord.Math.Core.dll"
 #r @"Accord.Math/lib/net45/Accord.Math.dll"

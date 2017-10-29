@@ -13,7 +13,7 @@ depends on
 // 1. Loading data
 
 #I @"../packages/"
-#r @"FSharp.Data/lib/net40/FSharp.Data.dll"
+#r @"FSharp.Data/lib/net45/FSharp.Data.dll"
 
 open FSharp.Data
 

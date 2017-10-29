@@ -1,5 +1,5 @@
 ﻿#I @"../packages/"
-#r @"FSharp.Data/lib/net40/FSharp.Data.dll"
+#r @"FSharp.Data/lib/net45/FSharp.Data.dll"
 #load "core-model.fs"
 #load "catalog-of-features.fs"
 
