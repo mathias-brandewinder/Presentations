@@ -1,0 +1,9 @@
+NUGET
+  remote: https://www.nuget.org/api/v2
+    CNTK.CPUOnly (2.5)
+      CNTK.Deps.MKL (2.5)
+      CNTK.Deps.OpenCV.Zip (2.5)
+    CNTK.Deps.MKL (2.5)
+    CNTK.Deps.OpenCV.Zip (2.5)
+    CNTK.FSharp (0.1.3)
+      CNTK.CPUOnly (>= 2.5)
